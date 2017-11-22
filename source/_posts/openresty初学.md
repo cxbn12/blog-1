@@ -30,48 +30,57 @@ categories: 工具
 
 [Lua简明教程](http://coolshell.cn/articles/10739.html)
 ## Lua处理在Nginx的几个阶段
-#### init_by_lua
+
+### init_by_lua
 
 应用模块：**http**
 
 主要用于加载时候的初始化，在nginx重新加载配置文件时候，就会运行。
-#### set_by_lua
+
+### set_by_lua
 
 应用模块：**server, location**
 
 主要用于设置变量，常用于计算一个逻辑，然后返回结果，此时不能使用`Output API、Control API、Subrequest API、Cosocket API`
-#### rewrite_by_lua
+
+### rewrite_by_lua
 
 应用模块：**http, server, location**
 
 此处应该与nginx中的`NGX_HTTP_REWRITE_PHASE`阶段对应，是在寻找到匹配的`location`之后用于修改请求的`URI`，在访问前执行。
-#### access_by_lua
+
+### access_by_lua
 
 应用模块：**http, server, location**
 
 主要用于访问控制，能收集到大部分变量，类似status需要在log阶段才有。
 
 这条指令运行于nginx access阶段的末尾，因此总是在 allow 和 deny 这样的指令之后运行，虽然它们同属 access 阶段。
-#### content_by_lua
+
+### content_by_lua
 
 应用模块：**location**
 
 阶段是所有请求处理阶段中最为重要的一个，运行在这个阶段的配置指令一般都肩负着生成内容（content）并输出HTTP响应。
-#### header_filter_by_lua
+
+### header_filter_by_lua
 
 应用模块：**http, server, location**
 
 一般只用于设置Cookie和Headers等。
-#### body_filter_by_lua
+
+### body_filter_by_lua
 
 应用模块：**http, server, location**
 
 一般会在一次请求中被调用多次, 因为这是实现基于 HTTP 1.1 chunked 编码的所谓“流式输出”的。
-#### log_by_lua
+
+### log_by_lua
 
 应用模块：**http, server, location**
 
 该阶段总是运行在请求结束的时候，用于请求的后续操作，如在共享内存中进行统计数据,如果要高精确的数据统计，应该使用body_filter_by_lua。
+
 ## Hello World
 
 这里忽略下载步骤，仅仅流程化地提一下 Hello World。
@@ -98,6 +107,7 @@ http {
 ```
 
 然后在启动nginx时候加入`-c`参数指明该配置文件所在位置应该就能顺利启动了（记住是openresty的nginx启动命令）。
+
 ## 获取当前请求
 
 请求信息是被openresty封装在了`ngx.req.*`中，文档中有着比较详尽的[描述](https://github.com/openresty/lua-nginx-module#ngxreqis_internal)
@@ -386,6 +396,7 @@ location /proxy/ {
 ```
 
 通过`rewrite`的分组重写，我们动态配置`proxy_pass`，这样如果是请求`http://www.example.com/foo/bar`就只需要在lua代码中构造一个请求`/proxy/http/www.example.com/foo/bar`即可。
+
 ## 参考资料
 1. [OpenResty文档](https://github.com/openresty/lua-nginx-module)
 2. [OpenResty最佳实践](https://www.gitbook.com/book/moonbingbing/openresty-best-practices)

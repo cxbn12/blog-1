@@ -202,6 +202,8 @@ if ((size >= threshold) && (null != table[bucketIndex])) { //是否需要重新�
    2. 在 (3) 的时候 newTable[3] = 3 -> null. 
    3. 在 (4) 的时候 e = next = 7 -> 3
 4. 此时会形成一个循环 e = 3, e.next = 7, e.next.next = 3 = e
+
+
 ## 参考文档
 
 [疫苗：Java HashMap的死循环](http://coolshell.cn/articles/9606.html)

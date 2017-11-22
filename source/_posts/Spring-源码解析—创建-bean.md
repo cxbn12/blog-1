@@ -253,7 +253,7 @@ protected BeanWrapper createBeanInstance(String beanName, RootBeanDefinition mbd
 1. 如果在`RootBeanDefinition`中存在`factoryMethodName`属性，或者说在配置文件中配置了`factory-method`，那么 Spring 会尝试使用`instantiateUsingFactoryMethod(beanName, mbd, args)`方法根据`RootBeanDefinition`中的配置生成bean的实例。
 2. 解析构造函数并进行构造函数的实例化。因为一个 bean 对应的类中可能会有多个构造函数，而每个构造函数的参数不同，Spring 在根据参数及类型去判断最终会使用哪个构造函数进行实例化。但是，**判断的过程是个比较消耗性能的步骤，所以采用缓存机制**，如果已经解析过则不需要重复解析而是直接从`RootBeanDefinition`中的属性`resolvedConstructorOrFactoryMethod`缓存的值去取，否则需要再次解析，并将解析的结果添加至 `RootBeanDefinition` 中的属性`resolvedConstructorOrFactoryMethod`中。
 
-##### ### `autowireConstructor`
+### `autowireConstructor`
 
 对于实例的创建Spring中分成了两种情况，一种是通用的实例化，另一种是带有参数的实例化。带有参数的实例化过程相当复杂，因为存在着不确定性，所以在判断对应参数上做了大量工作。
 

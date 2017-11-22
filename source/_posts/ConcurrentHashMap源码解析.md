@@ -527,6 +527,8 @@ public interface ConcurrentMap<K, V> extends Map<K, V> {
 > -  自定义内存管理/高效的内存布局
 > -  与原生代码和其他JVM进行互操作
 > -  对高级锁的支持
+
+
 ## 参考文档
 
 [聊聊并发（四）——深入分析ConcurrentHashMap](http://www.infoq.com/cn/articles/ConcurrentHashMap)
