@@ -19,7 +19,7 @@ categories: 造轮子
 
 #### UML
 
-![Proxy UML](https://github.com/BingLau7/blog/blob/master/Image/blog_22/Proxy.png?raw=true)
+![Proxy UML](https://github.com/BingLau7/blog/blob/master/images/blog_22/Proxy.png?raw=true)
 
 #### 代码实例
 

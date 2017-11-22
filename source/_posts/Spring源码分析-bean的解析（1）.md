@@ -1,13 +1,11 @@
 ---
-title: Spring源码分析-bean的解析（1）
+title: Spring-源码分析-bean的解析(1)
 date: 2017-10-25 16:57:19
 tags:
     - Spring
     - Java
 categories: 源码分析
 ---
-
-# Spring源码分析-bean的解析（1）
 
 >  当前版本 Spring 4.3.8
 
@@ -160,7 +158,7 @@ public class XmlBeanFactory extends DefaultListableBeanFactory {
 
 这里我们可以看出，他是继承了 `DefaultListableBeanFactory`，而  `DefaultListableBeanFactory` 也是整个 bean 加载的核心部分，是 Spring 注册及加载 bean 的默认实现。我们先从全局角度来了解一下它
 
-![容器加载相关类图](https://github.com/BingLau7/blog/blob/master/Image/blog_29/%E5%AE%B9%E5%99%A8%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9B%BE.png?raw=true)
+![容器加载相关类图](https://github.com/BingLau7/blog/blob/master/images/blog_29/%E5%AE%B9%E5%99%A8%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9B%BE.png?raw=true)
 
 ### `DefaultListableBeanFactory` 的各个类功能：
 
@@ -186,7 +184,7 @@ public class XmlBeanFactory extends DefaultListableBeanFactory {
 
 其中我们看到 `XmlFactoryBean` 构造器中第二句 `this.reader.loadBeanDefinitions(resource);`，但从名字来看它应该是加载 Bean 的主要执行者，而 reader 的定义在顶上 `private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);` 。所谓 `XmlBeanDefinitionReader` 主要是负责读取 Spring 配置文件信息。
 
-![配置文件读取相关类图](https://github.com/BingLau7/blog/blob/master/Image/blog_29/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9B%BE.png?raw=true)
+![配置文件读取相关类图](https://github.com/BingLau7/blog/blob/master/images/blog_29/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9B%BE.png?raw=true)
 
 这张图 Idea 生成有些许差别，于是就自己画了一下。
 
@@ -210,7 +208,7 @@ public class XmlBeanFactory extends DefaultListableBeanFactory {
 
 先从现有信息可以整理出下面这张时序图
 
-![XmlFactoryBean时序图](https://github.com/BingLau7/blog/blob/master/Image/blog_29/XmlFactoryBean%E6%97%B6%E5%BA%8F%E5%9B%BE.png?raw=true)
+![XmlFactoryBean时序图](https://github.com/BingLau7/blog/blob/master/images/blog_29/XmlFactoryBean%E6%97%B6%E5%BA%8F%E5%9B%BE.png?raw=true)
 
 #### 配置文件封装
 
@@ -283,7 +281,7 @@ public interface Resource extends InputStreamSource {
 
 对于不同来源的资源都有其对应的实现：
 
-![资源文件处理相关类图](https://github.com/BingLau7/blog/blob/master/Image/blog_29/%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9B%BE.png?raw=true)
+![资源文件处理相关类图](https://github.com/BingLau7/blog/blob/master/images/blog_29/%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9B%BE.png?raw=true)
 
 其中 `ClassPathResouce` 的实现
 
@@ -334,7 +332,7 @@ public interface Resource extends InputStreamSource {
 
 `this.reader.loadBeanDefinitions(resource)` 的讲解，其时序图
 
-![loadBeanDefinitions函数执行时序图](https://github.com/BingLau7/blog/blob/master/Image/blog_29/loadBeanDefinitions%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE.png?raw=true)
+![loadBeanDefinitions函数执行时序图](https://github.com/BingLau7/blog/blob/master/images/blog_29/loadBeanDefinitions%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE.png?raw=true)
 
 1. 封装资源文件。当进入 `XmlBeanDefinitionReader` 后首先对参数 `Resource` 使用 `EncodedResource` 类进行封装。
 2. 获取输入流。从 `Resource` 中获取对应的 `InputStream` 并构造 `InputSource`

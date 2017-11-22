@@ -9,7 +9,7 @@ categories: 基础原理
 
 ### 图示各区用途
 
-![内存区域图](https://github.com/BingLau7/blog/blob/master/Image/blog_27/1.png?raw=true)
+![内存区域图](https://github.com/BingLau7/blog/blob/master/images/blog_27/1.png?raw=true)
 
 <!-- more -->
 
@@ -108,7 +108,7 @@ JVM 规范对方法区的限制非常宽松，除了和 Java 堆一样不需要�
 
 #### 对象的内存布局
 
-![内存布局](https://github.com/BingLau7/blog/blob/master/Image/blog_27/2.png?raw=true)
+![内存布局](https://github.com/BingLau7/blog/blob/master/images/blog_27/2.png?raw=true)
 
 ##### 对象头：
 
@@ -135,7 +135,7 @@ JVM 规范对方法区的限制非常宽松，除了和 Java 堆一样不需要�
 
 如果是指针访问方式，java堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，而reference中存储的直接就是对象地址。
 
-![直接指针](https://github.com/BingLau7/blog/blob/master/Image/blog_27/3.png?raw=true)
+![直接指针](https://github.com/BingLau7/blog/blob/master/images/blog_27/3.png?raw=true)
 
 优点：速度相对更快。
 

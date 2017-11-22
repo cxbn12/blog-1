@@ -21,7 +21,7 @@ Python 中所有的内存管理机制都有两套实现，这两套实现由编�
 
 在 Python 中，内存管理机制被抽象成下图这样的层次似结果。
 
-![Python 内存管理机制的层次结构](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%883.48.00.png?raw=true)
+![Python 内存管理机制的层次结构](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%883.48.00.png?raw=true)
 
 ### Layer 0：
 
@@ -227,7 +227,7 @@ pool->freeblock = bp + size;
 return (void *)bp; 
 ```
 
-![改造成 pool 后的 4KB 内存](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%886.54.29.png?raw=true)
+![改造成 pool 后的 4KB 内存](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%886.54.29.png?raw=true)
 
 注意其中的实线箭头是指针，但是虚线箭头不是代表指针，是偏移位置的形象表示。在nextoffset和maxnextoffset中存储的是相对于poo头部的偏移位置。
 
@@ -280,7 +280,7 @@ void PyObject_Free(void *p)
 }
 ```
 
-![释放了 block 之后产生的自由 block 链表](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%887.25.44.png?raw=true)
+![释放了 block 之后产生的自由 block 链表](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%887.25.44.png?raw=true)
 
 ### arena
 
@@ -344,11 +344,11 @@ struct arena_object {
 
 pool_header管理的内存与pool_header自身是一块连续的内存，而areana_object与其管理的内存则是分离的。这后面隐藏着这样一个事实：当pool_header被申请时，它所管理的block集合的内存一定也被申请了；但是当aerna_object被申请时，它所管理的pool集合的内存则没有被申请。换句话说，arena_object和pool集合在某一时刻需要建立联系。注意，这个建立联系的时刻是一个关键的时刻，Python从这个时刻一刀切下，将一个arena_object切分为两种状态。
 
-![pool 和 arena 的内存布局区别](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%887.49.39.png?raw=true)
+![pool 和 arena 的内存布局区别](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%887.49.39.png?raw=true)
 
 当一个arena的area_object没有与pool集合建立联系时，这时的arena处于“未使用”状态；一旦建立了联系，这时arena就转换到了“可用”状态。对于每一种状态，都有一个arena的链表。“未使用”的arena的链表表头是unused_arena_objects、arena与arena之间通过nextarena连接，是一个单向链表；而“可用”的arena的链表表头是usable_arenas、arena与arena之间通过nextarena和prevarena连接，是一个双向链表。
 
-![某一时刻多个 arena 的一个可能状态](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%887.56.39.png?raw=true)
+![某一时刻多个 arena 的一个可能状态](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%887.56.39.png?raw=true)
 
 #### 申请 arena
 
@@ -438,7 +438,7 @@ Python 内部默认的小块内存与大块内存的分界点定在512个字节�
 -  full状态：pool中所有的block都已经被使用，这种状态的pool在arena中，但不在arena的freepools链表中；
 -  empty状态：pool中所有的block都未被使用，处于这个状态的pool的集合通过其pool_header中的nextpool构成一个链表，这个链表的表头就是arena_object中的freepools；
 
-![某个时刻 aerna 中 pool 集合的可能状态](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%888.25.34.png?raw=true)
+![某个时刻 aerna 中 pool 集合的可能状态](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%888.25.34.png?raw=true)
 
 Python内部维护的usedpools数组是一个非常巧妙的实现，维护着所有的处于used状态的pool。当申请内存时，Python就会通过usedpools寻找到一块可用的（处于used状态的）pool，从中分配一个block。一定有一个与usedpools相关联的机制，完成从申请的内存的大小到size class index之间的转换，否则Python也就无法寻找到最合适的pool了。这种机制与usedpools的结构有密切的关系，我们来看一看usedpools的结构。
 
@@ -473,7 +473,7 @@ static poolp usedpools[2 * ((NB_SMALL_SIZE_CLASSES + 7) / 8) * 8] = {
 
 
 
-![usedpools 数组](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%888.29.02.png?raw=true)
+![usedpools 数组](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%888.29.02.png?raw=true)
 
 Python会首先获得 size class index，通过 size = (uint )(nbytes - 1) >> ALIGNMENT_SHIFT，得到 size class index 为3。在usedpools 中，寻找第3+3=6个元素，发现 usedpools[6] 的值是指向 usedpools[4] 的地址。有些迷惑了，对吧？好了，现在对照 pool_header 的定义来看一看 usedpools[6] -> nextpool 这个指针指向哪里了呢？是从 usedpools[6]（即usedpools+4）开始向后偏移8个字节（一个ref的大小加上一个freeblock的大小）后的内存，不正是 usedpools[6] 的地址（即usedpools+6）吗？这是Python内部使用的一个 trick。
 
@@ -805,7 +805,7 @@ void PyObject_Free(void *p)
 
 #### 内存池全景
 
-![Python 的小块内存的内存池全景](https://github.com/BingLau7/blog/blob/master/Image/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%889.59.26.png?raw=true)
+![Python 的小块内存的内存池全景](https://github.com/BingLau7/blog/blob/master/images/blog_18/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-04%20%E4%B8%8B%E5%8D%889.59.26.png?raw=true)
 
 ## 参考资料
 

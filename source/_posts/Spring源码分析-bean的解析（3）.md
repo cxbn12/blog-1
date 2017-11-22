@@ -1,13 +1,11 @@
 ---
-title: Spring源码分析-bean的解析（3）
+title: Spring-源码分析-bean的解析(3)
 date: 2017-11-12 16:58:42
 tags:
     - Spring
     - Java
 categories: 源码分析
 ---
-
-# Spring源码分析-bean的解析（3）
 
 >  当前版本 Spring 4.3.8
 

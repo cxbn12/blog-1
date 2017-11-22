@@ -7,8 +7,6 @@ tags:
 categories: 源码分析
 ---
 
-# 创建 bean
-
 在经历过 `AbstractAutowireCapableBeanFactory#createBean` 中的 `resolveBeforeInstantiation` 方法后，程序有两个选择，如果创建了代理或者说重写了 `InstantiationAwareBeanPostProcessor` 的 `postProcessBeforeInstantiation` 方法并在方法 `postProcessBeforeInstantiation` 中改变了 `bean`，则直接返回就可以了，否则需要进行常规 `bean` 的创建。而这常规 `bean` 的创建就是在 `doCreateBean` 中完成的。
 
 `AbstractAutowireCapableBeanFactory#doCreateBean`

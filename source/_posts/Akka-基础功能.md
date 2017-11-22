@@ -6,12 +6,9 @@ tags:
     - scala
 categories: 分布式
 ---
-
-## Akka 基础功能
-
 ### 生命周期
 
-![生命周期](https://github.com/BingLau7/blog/blob/master/Image/blog_25/actor_lifecycle.png?raw=true)
+![生命周期](https://github.com/BingLau7/blog/blob/master/images/blog_25/actor_lifecycle.png?raw=true)
 
 <!-- more -->
 

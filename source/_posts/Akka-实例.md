@@ -7,10 +7,9 @@ tags:
 categories: 分布式
 ---
 
-## Akka 实例
 ### 动态路由器
 
-![动态路由器](https://github.com/BingLau7/blog/blob/master/Image/blog_26/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%99%A8.png?raw=true)
+![动态路由器](https://github.com/BingLau7/blog/blob/master/images/blog_26/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%99%A8.png?raw=true)
 
 动态路由器会使用规则，这些规则具有一定的复杂性。
 
@@ -254,7 +253,7 @@ unregister count > can CompleteAfterUnregistered
 
 将一些消息整合作为整体发送。
 
-![分散-聚集路由器](https://github.com/BingLau7/blog/blob/master/Image/blog_26/%E5%88%86%E6%95%A3%E2%80%94%E8%81%9A%E9%9B%86%E8%B7%AF%E7%94%B1%E5%99%A8.png?raw=true)
+![分散-聚集路由器](https://github.com/BingLau7/blog/blob/master/images/blog_26/%E5%88%86%E6%95%A3%E2%80%94%E8%81%9A%E9%9B%86%E8%B7%AF%E7%94%B1%E5%99%A8.png?raw=true)
 
 ```scala
 package io.binglau.scala.akka.demo.scatter_gather
@@ -571,7 +570,7 @@ class RockBottomOuterwearPriceQuotes(priceQuoteRequestPublisher: ActorRef) exten
 
 ### 轮询消费者
 
-![轮询消费者](https://github.com/BingLau7/blog/blob/master/Image/blog_26/%E8%BD%AE%E8%AF%A2%E6%B6%88%E8%B4%B9%E8%80%85.png?raw=true)
+![轮询消费者](https://github.com/BingLau7/blog/blob/master/images/blog_26/%E8%BD%AE%E8%AF%A2%E6%B6%88%E8%B4%B9%E8%80%85.png?raw=true)
 
 在这种模式中，消费者通过轮询方式向指定资源请求获取信息。在资源能够提供该信息前，需要阻塞消费者。与此相反，在使用 Actor 模型时，无法使 Actor 对象以轮询方式向另一个 Actor 对象请求信息，因为 Actor 对象之间的协同操作不会被阻塞。一个 Actor 对象从另一个 Actor 对象获取信息的唯一方式是使用请求—回复模式。也就是说，需要使用请求—回复模式高效地模拟轮询消费者模式。
 

@@ -7,8 +7,6 @@ tags:
 categories: 源码分析
 ---
 
-# Spring源码解析——Bean的加载前奏
-
 `User user = (User)context.getBean("testbean");`
 
 由这句入手
