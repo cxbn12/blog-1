@@ -1,7 +1,9 @@
 ---
 title: apache 的 ab 工具简单介绍
-date: 2017-11-21 16:20:33
+date: 2015-11-13 16:20:33
 tags:
+    - http
+categories: 工具
 ---
 
 首先我们看看 `ab -h` 命令提供的信息:

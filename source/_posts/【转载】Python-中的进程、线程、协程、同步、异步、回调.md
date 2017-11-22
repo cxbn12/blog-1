@@ -1,7 +1,11 @@
 ---
 title: 【转载】Python 中的进程、线程、协程、同步、异步、回调
-date: 2017-11-21 16:23:11
+date: 2015-07-16 16:23:11
 tags:
+    - Python
+    - IO
+    - 异步编程
+categories: 基础原理
 ---
 
 [Python 中的进程、线程、协程、同步、异步、回调](http://segmentfault.com/a/1190000001813992)  

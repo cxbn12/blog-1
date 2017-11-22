@@ -1,7 +1,10 @@
 ---
 title: 分析一波 Java 线程池
-date: 2017-11-21 16:51:43
+date: 2017-02-15 16:51:43
 tags:
+    - Java
+    - 并发编程
+categories: 源码分析
 ---
 
 ### Executors.executeCase
@@ -41,8 +44,10 @@ public class LiftOff implements Runnable {
             Thread.yield();
         }
     }
-} 
+}
 ```
+
+<!-- more -->
 
 #### newFixedThreadPool
 

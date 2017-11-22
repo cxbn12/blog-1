@@ -1,7 +1,10 @@
 ---
 title: Akka 实例
-date: 2017-11-21 16:55:04
+date: 2017-09-21 16:55:04
 tags:
+    - akka
+    - scala
+categories: 分布式
 ---
 
 ## Akka 实例
@@ -10,6 +13,8 @@ tags:
 ![动态路由器](https://github.com/BingLau7/blog/blob/master/Image/blog_26/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%99%A8.png?raw=true)
 
 动态路由器会使用规则，这些规则具有一定的复杂性。
+
+<!-- more -->
 
 要接收来自动态路由器的消息，Actor 对象必须注册它感兴趣的消息，通过最基础的注册流程，Actor 对象可以告诉路由器，它对哪种消息感兴趣。也可以通过更精细的规则，要求动态路由器执行多层次的查询操作，以便为 Actor 对象传输指定的消息。
 

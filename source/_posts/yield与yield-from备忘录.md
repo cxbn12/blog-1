@@ -1,10 +1,14 @@
 ---
 title: yield与yield from备忘录
-date: 2017-11-21 16:49:05
+date: 2017-03-21 16:49:05
 tags:
+    - Python
+categories: 工具
 ---
 
 对于 `yield`与`yield from`的语法，官方给出的解释[Link](https://docs.python.org/3.6/reference/simple_stmts.html#yield)
+
+<!-- more -->
 
 ```python
 yield <expr>

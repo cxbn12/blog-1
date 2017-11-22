@@ -1,7 +1,9 @@
 ---
 title: Java 技巧—懒加载
-date: 2017-11-21 16:56:33
+date: 2017-10-28 16:56:33
 tags:
+    - Java
+categories: 工具
 ---
 
 ```Java

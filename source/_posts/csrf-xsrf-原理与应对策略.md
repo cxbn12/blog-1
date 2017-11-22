@@ -1,7 +1,10 @@
 ---
 title: csrf(xsrf)原理与应对策略
-date: 2017-11-21 16:21:13
+date: 2015-12-19 16:21:13
 tags:
+    - web安全
+    - Python
+categories: 基础原理
 ---
 
 >  **跨站请求伪造**（英语：Cross-site request forgery），也被称为 **one-click attack** 或者 **session riding**，通常缩写为 **CSRF** 或者 **XSRF**， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。

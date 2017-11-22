@@ -1,12 +1,17 @@
 ---
 title: Java内存区域与内存溢出异常
-date: 2017-11-21 16:55:36
+date: 2017-10-21 16:55:36
 tags:
+    - JVM
+    - Java
+categories: 基础原理
 ---
 
 ### 图示各区用途
 
 ![内存区域图](https://github.com/BingLau7/blog/blob/master/Image/blog_27/1.png?raw=true)
+
+<!-- more -->
 
 #### 程序计数器
 

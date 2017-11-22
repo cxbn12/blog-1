@@ -1,7 +1,9 @@
 ---
 title: Python整型对象创建
-date: 2017-11-21 16:50:44
+date: 2017-02-01 16:50:44
 tags:
+    - Python
+categories: 源码分析
 ---
 
 ### 整数类型

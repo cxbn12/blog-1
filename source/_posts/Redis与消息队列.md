@@ -1,7 +1,10 @@
 ---
 title: Redis与消息队列
-date: 2017-11-21 16:19:11
+date: 2016-04-21 16:19:11
 tags:
+    - 消息队列
+    - redis
+categories: 工具
 ---
 
 

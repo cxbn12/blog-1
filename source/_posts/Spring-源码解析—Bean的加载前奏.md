@@ -1,7 +1,10 @@
 ---
 title: Spring 源码解析—Bean的加载前奏
-date: 2017-11-21 16:59:44
+date: 2017-11-14 16:59:44
 tags:
+    - Spring
+    - Java
+categories: 源码分析
 ---
 
 # Spring源码解析——Bean的加载前奏
@@ -9,6 +12,8 @@ tags:
 `User user = (User)context.getBean("testbean");`
 
 由这句入手
+
+<!-- more -->
 
 `AbstractBeanFactory#getBean`
 

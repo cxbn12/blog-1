@@ -1,7 +1,9 @@
 ---
 title: HashMap源码解析
-date: 2017-11-21 16:28:17
+date: 2017-04-21 16:28:17
 tags:
+    - Java
+categories: 源码解析
 ---
 
 ``` java
@@ -14,6 +16,9 @@ MAXIMUM_CAPACITY = 1 << 30;
 */
 DEFAULT_LOAD_FACTOR = 0.75f;        //填充因子
 ```
+
+<!-- more -->
+
 ### `put`方法解析：
 1. 判断是否是空 table ,初始化
 

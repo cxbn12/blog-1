@@ -1,12 +1,14 @@
 ---
 title: LinkedHashMap源码解析
-date: 2017-11-21 16:48:41
+date: 2017-05-25 16:48:41
 tags:
 ---
 
 ### 概述
 
 >  Hash table and linked list implementation of the Map interface, with predictable iteration order. This implementation differs fromHashMap in that it maintains a doubly-linked list running through all of its entries. This linked list defines the iteration ordering, which is normally the order in which keys were inserted into the map (_insertion-order_). Note that insertion order is not affected if a key is _re-inserted_ into the map. (A key k is reinserted into a map m if m.put(k, v) is invoked when m.containsKey(k) would return trueimmediately prior to the invocation.)
+
+<!-- more -->
 
 其`header`头定义
 

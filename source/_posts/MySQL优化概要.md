@@ -1,7 +1,10 @@
 ---
 title: MySQL优化概要
-date: 2017-11-21 16:18:14
+date: 2016-03-11 16:18:14
 tags:
+    - MySQL
+    - 性能优化
+categories: 数据库
 ---
 
 

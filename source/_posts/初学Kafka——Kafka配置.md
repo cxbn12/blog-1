@@ -1,7 +1,9 @@
 ---
 title: 初学Kafka——Kafka配置
-date: 2017-11-21 16:22:24
+date: 2016-03-24 16:22:24
 tags:
+    - Kafka
+categories: 工具
 ---
 
 ### 系统环境

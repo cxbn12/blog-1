@@ -1,7 +1,10 @@
 ---
 title: Spring源码分析-bean的解析（2）
-date: 2017-11-21 16:58:14
+date: 2017-11-03 16:58:14
 tags:
+    - Spring
+    - Java
+categories: 源码分析
 ---
 
 # Spring源码分析-bean的解析（2）
@@ -11,6 +14,8 @@ tags:
 ## 默认标签的解析
 
 接上 `parseDefaultElement(ele, delegate);`
+
+<!-- more -->
 
 `DefaultBeanDefinitionDocumentReader#parseDefaultElement`
 

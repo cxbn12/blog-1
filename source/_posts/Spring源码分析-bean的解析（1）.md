@@ -1,7 +1,10 @@
 ---
 title: Spring源码分析-bean的解析（1）
-date: 2017-11-21 16:57:19
+date: 2017-10-25 16:57:19
 tags:
+    - Spring
+    - Java
+categories: 源码分析
 ---
 
 # Spring源码分析-bean的解析（1）
@@ -9,6 +12,8 @@ tags:
 >  当前版本 Spring 4.3.8
 
 我们一开始需要先定义一个 `Bean` 和一个 `xml`
+
+<!-- more -->
 
 ```Java
 // bean

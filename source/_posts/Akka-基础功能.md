@@ -1,7 +1,10 @@
 ---
 title: Akka 基础功能
-date: 2017-11-21 16:54:31
+date: 2017-09-20 16:54:31
 tags:
+    - akka
+    - scala
+categories: 分布式
 ---
 
 ## Akka 基础功能
@@ -9,6 +12,8 @@ tags:
 ### 生命周期
 
 ![生命周期](https://github.com/BingLau7/blog/blob/master/Image/blog_25/actor_lifecycle.png?raw=true)
+
+<!-- more -->
 
 ```scala
 package io.binglau.scala.akka.demo

@@ -1,7 +1,10 @@
 ---
 title: Tornado源码阅读之后
-date: 2017-11-21 16:20:04
+date: 2015-11-09 16:20:04
 tags:
+    - Python
+    - Tornado
+categories: 源码分析
 ---
 
 大概是上个星期将Tornado的源码大概读了一遍，有这么几篇文章值得参考:
