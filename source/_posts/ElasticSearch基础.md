@@ -51,6 +51,8 @@ categories: 工具
 
 `{"_index":"books","_type":"es","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"created":true}`
 
+<!-- more -->
+
 #### Java API
 
 ```Java
