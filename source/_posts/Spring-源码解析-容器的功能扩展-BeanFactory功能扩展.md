@@ -1,13 +1,3 @@
----
-title: Spring 源码解析-容器的功能扩展-BeanFactory功能扩展
-date: 2017-11-25 13:27:08
-tags:
-    - Spring
-    - Java
-categories: 源码分析
-
----
-
 之前分析是建立在`BeanFactory`  接口以及它的实现类 `XmlBeanFactory` 来进行分析的， `ApplicationContext` 包含了 `BeanFactory` 的所有功能，多数情况我们都会使用 `ApplicationConetxt`。其加载方式如下:
 
 `ApplicationContext ctx = new ClassPathXmlApplicationContext("beanFactory.xml");`
@@ -423,7 +413,7 @@ categories: 源码分析
 
 借助 idea 的调用链工具我们可以看到
 
-【占图】
+![ResourceEditorRegistrar的registerCustomEditors方法](https://github.com/BingLau7/blog/blob/master/images/blog_37/ResourceEditorRegistrar%E7%9A%84registerCustomEditors%E6%96%B9%E6%B3%95.jpg?raw=true)
 
 在 `AbstractBeanFactory` 中的 `registerCustomEditors` 方法中被调用过，继续下去我们可以看到一个熟悉的方法就是 `AbstractBeanFactory` 类中的 `initBeanWrapper` 方法，这是在 bean 初始化时候使用的一个方法，[详见](https://binglau7.github.io/2017/11/20/Spring-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E2%80%94%E5%88%9B%E5%BB%BA-bean/#instantiateBean-不带参数的构造函数实例化过程)。
 
