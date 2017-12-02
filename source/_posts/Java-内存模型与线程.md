@@ -269,6 +269,8 @@ doSomethingWithConfig();
 >  -  StoreLoad屏障：对于这样的语句Store1; StoreLoad; Load2，在Load2及后续所有读取操作执行前，保证Store1的写入对所有处理器可见。它的开销是四种屏障中最大的。在大多数处理器的实现中，这个屏障是个万能屏障，兼具其它三种内存屏障的功能。
 >
 >  有的处理器的重排序规则较严，无需内存屏障也能很好的工作，Java编译器会在这种情况下不放置内存屏障。为了实现上一章中讨论的JSR-133的规定，Java编译器会这样使用内存屏障。
+>
+>  ![内存屏障](https://github.com/BingLau7/blog/blob/master/images/blog_39/%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C.png?raw=true)
 
 在某些情况下，volatile 的同步机制的性能确实要优于锁（使用 synchronized 关键字或 java.util.concurrent 包里面的锁），但是由于**虚拟机对锁实行的许多消除和优化，使得我们很难量化地认为 volatile 就会比 synchronized 快多少**。如果让volatile自己与自己比较，那可以确定一个原则：**volatile 变量读操作的性能消耗与普通变量几乎没有什么差别，但是写操作则可能会慢一些**，因为它需要在本地代码中插入许多内存屏障指令来保证处理器不发生乱序执行。不过即便如此，大多数场景下 volatile 的总开销仍然要比锁低，我**们在 volatile 与锁之中选择的唯一依据仅仅是 volatile 的语义能否满足使用场景的需求**。
 
