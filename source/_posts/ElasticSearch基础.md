@@ -3,7 +3,6 @@ title: ElasticSearch基础
 date: 2017-11-23 14:09:33
 tags:
     - ElasticSearch
-    - Java
 categories: 工具
 ---
 
