@@ -3,6 +3,7 @@ title: 初学Kafka——Kafka配置
 date: 2016-03-24 16:22:24
 tags:
     - Kafka
+    - 分布式与中间件
 categories: 工具
 ---
 

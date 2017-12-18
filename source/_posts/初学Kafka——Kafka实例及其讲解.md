@@ -3,6 +3,7 @@ title: 初学Kafka——Kafka实例及其讲解
 date: 2016-03-22 16:21:45
 tags:
     - Kafka
+    - 分布式与中间件
 categories: 工具
 ---
 
