@@ -97,30 +97,23 @@ def loop():
    from concurrent.futures import ProcessPoolExecutor
    ```
 
-   def cpu_bound_operation(x):
 
-```
-   print("cpu bounding")
-   time.sleep(x)
-```
+   def cpu_bound_operation(x):
+       print("cpu bounding")
+       time.sleep(x)
 
    async def func():
+       # 线程池 / 进程池执行
+       loop.run_in_executor(p, cpu_bound_operation, 5)
+       print("doing something thing")
 
-```
-   # 线程池 / 进程池执行
-   loop.run_in_executor(p, cpu_bound_operation, 5)
-   print("doing something thing")
-```
 
    if __name__ == '__main__':
-
-```
-   loop = asyncio.get_event_loop()
-   p = ProcessPoolExecutor(2)
-   loop.run_until_complete(func())
-   loop.run_until_complete(func())
-   loop.run_until_complete(func())
-```
+       loop = asyncio.get_event_loop()
+       p = ProcessPoolExecutor(2)
+       loop.run_until_complete(func())
+       loop.run_until_complete(func())
+       loop.run_until_complete(func())
 
    """
    doing something thing
@@ -128,13 +121,12 @@ def loop():
    doing something thing
    cpu bounding
    cpu bounding
-
-   ** sleep 5 seconds **
-
+   # sleep 5 seconds
    cpu bounding
    """
+   ```
 
-```
+   ​
 
 ### Future 与 Future
 
@@ -144,7 +136,7 @@ def loop():
 
 你如果在阅读文档的时候你会发现，`loop.run_until_complete` 里面给出的参数就是 `future`，这里的 `future` 指的是 `asyncio.futures.Future`，文档会告诉你 `If the argument is a coroutine object, it is wrapped by ensure_future().` （我真的完全不想知道 `coroutine object` diff `coroutine`），简单来说我们从 `ensure_future()` 入手知道它大概封装了一个协程，然后读源码的时候发现它给你返回的是一个 `task`。
 
-```python
+​```python
 def ensure_future(coro_or_future, *, loop=None):
     """Wrap a coroutine or an awaitable in a future.
 
@@ -165,7 +157,7 @@ def ensure_future(coro_or_future, *, loop=None):
         return ensure_future(_wrap_awaitable(coro_or_future), loop=loop)
     else:
         raise TypeError('A Future, a coroutine or an awaitable is required')
-```
+   ```
 
 这时候你大概能知道 `run_until_complete` 执行的是一个 `task` （当然，你如果去看文档的会知道，它能执行一个 task 列表）。
 
