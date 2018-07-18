@@ -84,59 +84,58 @@ def loop():
 那，`event_loop` 有什么用呢？
 
 -  它是 `asyncio` 的起点，是执行所有事件的起点
-
 -  通过 `loop.run_forever()` + `loop.call_*` 实现对事件的调度，最后关闭的时候调用 `loop.close()`
-
 -  通过 `loop.add_reader()、loop.remove_reader()、loop.add_writer()、loop.remove_writer()` 来注册读写事件，其中有两个参数：文件描述符、`callback`，另外还有就是 `callback` 的参数，事件驱动嘛，多用于 socket。
-
 -  通过使用 `run_in_executor` 来达到将耗时调用委托给线程池/进程池
 
-   ```python
-   import asyncio
-   import time
-   from concurrent.futures import ProcessPoolExecutor
-   ```
+
+```python
+import asyncio
+import time
+from concurrent.futures import ProcessPoolExecutor
 
 
-   def cpu_bound_operation(x):
-       print("cpu bounding")
-       time.sleep(x)
+def cpu_bound_operation(x):
+    print("cpu bounding")
+    time.sleep(x)
 
-   async def func():
-       # 线程池 / 进程池执行
-       loop.run_in_executor(p, cpu_bound_operation, 5)
-       print("doing something thing")
+async def func():
+    # 线程池 / 进程池执行
+    loop.run_in_executor(p, cpu_bound_operation, 5)
+    print("doing something thing")
 
 
-   if __name__ == '__main__':
-       loop = asyncio.get_event_loop()
-       p = ProcessPoolExecutor(2)
-       loop.run_until_complete(func())
-       loop.run_until_complete(func())
-       loop.run_until_complete(func())
+if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
+    p = ProcessPoolExecutor(2)
+    loop.run_until_complete(func())
+    loop.run_until_complete(func())
+    loop.run_until_complete(func())
+    
+"""
+doing something thing
+doing something thing
+doing something thing
+cpu bounding
+cpu bounding
 
-   """
-   doing something thing
-   doing something thing
-   doing something thing
-   cpu bounding
-   cpu bounding
-   # sleep 5 seconds
-   cpu bounding
-   """
-   ```
+-- sleep 5 seconds --
 
-   ​
+cpu bounding
+"""
+```
+
+
 
 ### Future 与 Future
 
-真的，我第一次知道 `Future` 是在 Java 中，然后是在 `Tornado` 中，然后告诉我，`Python` 中还有两个（完全不兼容） `Future`，分别是 `asyncio.futures.Future`，`concurrent.futures.Future`，而且这两个都在 `asyncio` 中使用，真是感觉，这屎有毒。
+  真的，我第一次知道 `Future` 是在 Java 中，然后是在 `Tornado` 中，然后告诉我，`Python` 中还有两个（完全不兼容） `Future`，分别是 `asyncio.futures.Future`，`concurrent.futures.Future`，而且这两个都在 `asyncio` 中使用，真是感觉，这屎有毒。
 
 >  例如，`asyncio.run_coroutine_threadsafe()` 将调度一个协程到在另一个线程中运行的事件循环，但它返回一个 `concurrent.futures.Future` 对象，而不是 `asyncio.futures.Future` 对象。 这是有道理的，因为只有 `concurrent.futures.Future` 对象是线程安全的。
 
 你如果在阅读文档的时候你会发现，`loop.run_until_complete` 里面给出的参数就是 `future`，这里的 `future` 指的是 `asyncio.futures.Future`，文档会告诉你 `If the argument is a coroutine object, it is wrapped by ensure_future().` （我真的完全不想知道 `coroutine object` diff `coroutine`），简单来说我们从 `ensure_future()` 入手知道它大概封装了一个协程，然后读源码的时候发现它给你返回的是一个 `task`。
 
-​```python
+```Python
 def ensure_future(coro_or_future, *, loop=None):
     """Wrap a coroutine or an awaitable in a future.
 
@@ -157,7 +156,7 @@ def ensure_future(coro_or_future, *, loop=None):
         return ensure_future(_wrap_awaitable(coro_or_future), loop=loop)
     else:
         raise TypeError('A Future, a coroutine or an awaitable is required')
-   ```
+```
 
 这时候你大概能知道 `run_until_complete` 执行的是一个 `task` （当然，你如果去看文档的会知道，它能执行一个 task 列表）。
 
