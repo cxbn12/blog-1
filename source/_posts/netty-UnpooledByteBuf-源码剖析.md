@@ -1,11 +1,10 @@
 ---
-title: [Netty]UnpooledByteBuf 源码剖析
-date: 2018-11-17 18:45:20
+title: Netty-UnpooledByteBuf 源码剖析
+date: 2018-11-17 18:13:28
 tags:
     - NIO
     - Netty源码分析系列
 categories: 源码分析
-
 ---
 
 ### 要点
@@ -15,6 +14,7 @@ categories: 源码分析
 3. Direct 内部依托于 `PlatformDependent0` 的各种 native 方法
 4. toLeakAwareBuffer 部分主要讨论了 Netty 是如何应对内存泄露，以及检测内存泄露跟踪的四个级别是如何实现的
 
+<!-- more -->
 
 **Demo**
 

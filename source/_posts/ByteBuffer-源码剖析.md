@@ -18,6 +18,8 @@ categories: 源码分析
 5. 在 JDK11 中 MappedByteBuffer 的创建实际是 DirectByteBuffer
 6. DirectByteBuffer 的垃圾回收利用了幻象引用进行回收，详见下面的 `Cleaner`
 
+<!-- more -->
+
 ### Demo
 
 ```java
